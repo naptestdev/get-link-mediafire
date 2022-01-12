@@ -77,11 +77,15 @@
   const handleDownloadAll = () => {
     let index = 0;
 
-    const interval = setInterval(() => {
-      forceDownload(urls[index]);
+    forceDownload(urls[index]);
 
-      if (!urls[++index]) clearInterval(interval);
-    }, 1500);
+    if (urls[++index]) {
+      const interval = setInterval(() => {
+        forceDownload(urls[index]);
+
+        if (!urls[++index]) clearInterval(interval);
+      }, 1500);
+    }
   };
 </script>
 
